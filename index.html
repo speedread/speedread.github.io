@@ -1,0 +1,91 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>SpeedReading-Upgrade for your Website</title>
+    <meta name="author" content="Saso Nikolov">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width,initial-scale=1.0">
+	<link href="css/bootstrap.min.css" rel="stylesheet" media="screen">
+	<script type="text/javascript" src="js/speedread.js"></script>
+</head>
+<body>
+<div class="jumbotron">
+	<div class="container">
+		<h1>Upgrade your website - with speedreading functionality</h1>
+		<p class="lead">Add a small piece of JavaScript into your website and activat speedreading opportunities. Let you audience consume your content quick and with full awareness.</p>
+	</div>
+</div>
+<div class="container">
+	<h2 class="text-primary">Choose what elements can be read</h2>
+	<p>The usage is simple. You can decide which content can be shown as speedread. This is always an option, no must. The user can choose to start speedread functionality.</p>
+	<h2 class="text-primary">Try it out</h2>
+	<p class="" onclick="SpeedRead.setText(this.innerHTML).startReading()">
+	Click on this text. The content will be displayed in an overlay
+	box. The words are shown separately. This way you can read them quicker, then following the line with your eyes. Increase the speed. Make it a game. You will learn quick and be able to read faster and faster. Time is money? Here you have it, I give you the money now, by saving time. 
+	</p>
+
+	<h2 class="text-success">How to use it</h2>
+	<div class="container">
+	<ul>
+		<li>Add the JavaScript to your website</li>
+		<li>Add Buttons or Options to activate the speedread-Box</li>
+	</ul>
+
+	<h3>Add the JavaScript to your website</h3>
+	<dl class="dl-horizontal">
+		<dt>Download the script</dt>
+		<dd><a href="js/speedread.js" target="_blank">speedread.js</a></dd>
+		<dt>Put it on your server</dt>
+		<dd>Copy the javascript file on your website server. e.g. in your website folder <code>httpdocs/js/</code>.
+		</dd>
+		<dt>Add it to your HTML</dt>
+		<dd>
+		<br>
+		Add following HTML code to your website to include the javascript code in your website. Place the code within the <code>&lt;head&gt;</code> section
+		<pre>
+&lt;head&gt;
+...
+<b>&lt;script src="js/speedread.js"&gt;&lt;/script&gt;</b>
+&lt;/head&gt;		</pre>
+		</dd>
+	</dl>
+	<h3>Add Buttons or Options to activate the speedread-Box</h3>
+	<dl class="dl-horizontal">
+ 		<dt>Add onclick event to content element</dt>
+  		<dd>
+  		The content can have HTML inside. This will be stripped.
+		<pre>
+&lt;div <b>onclick="SpeedRead.setText(this.innerHTML).startReading()"</b>&gt;
+Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. &lt;b&gt;At vero eos et accusam&lt;/b&gt; et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
+&lt;/div&gt;		</pre>
+		</dd>
+		<dt>Add button to start speedread-Box</dt>
+		<dd>
+		Create your own javascript logic - by knowing the functions
+		<ul>
+			<li></li>
+		</ul>
+		</dd>
+	</dl>
+	</div>
+
+	<h2 class="text-info">What the developer say</h2>
+	<blockquote>
+	Awesome. Thank you. I know you have the idea from spritzer, but this is simple as I need it.
+	<small>Saso Nikolov</small>
+	</blockquote>
+</div>
+<div style="border-top:1px solid #e5e5e5;padding-top:20px;padding-bottom:20px;">
+	<div class="container">
+	&copy; 2014 
+	<address>
+	<strong>Saso Nikolov</strong><br>
+	Julius-Brecht-Strasse 3<br>
+	60433 Frankfurt<br>
+	Germany
+	</address>
+	</div>
+</div>
+</body>
+</html>	
