@@ -7,6 +7,18 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width,initial-scale=1.0">
 	<link href="css/bootstrap.min.css" rel="stylesheet" media="screen">
+	<style type="text/css">
+	.btn-transparent {color: white;border-color:white;background-color:transparent;}
+	.btn-transparent:hover,
+	.btn-transparent:focus,
+	.btn-transparent:active,	
+	.btn-transparent.active,
+	.open .dropdown-toggle.btn-transparent {
+		color: white;
+		border-color:white;
+		background-color: rgba(255,255,255,.4);
+	}
+	</style>
 	<script type="text/javascript" src="js/speedread.js"></script>
 </head>
 <body>
@@ -14,19 +26,19 @@
 	<div class="container">
 		<h1>Upgrade your website - with speedreading functionality</h1>
 		<p class="lead">Add a small piece of JavaScript into your website and activat speedreading opportunities. Let you audience consume your content quick and with full awareness.</p>
+		<p class="text-center"><button type="button" onclick="SpeedRead.setText(document.getElementById('tryitouttext').innerHTML).startReading()" class="btn btn-lg btn-transparent">Try it out</button></p>
 	</div>
 </div>
 <div class="container">
 	<h2 class="text-primary">Choose what elements can be read</h2>
-	<p>The usage is simple. You can decide which content can be shown as speedread. This is always an option, no must. The user can choose to start speedread functionality.</p>
+	<p onclick="SpeedRead.setText(this.innerHTML).startReading()">The usage is simple. You can decide which content can be shown as speedread. This is always an option, no must. The user can choose to start speedread functionality.</p>
 	<h2 class="text-primary">Try it out</h2>
-	<p class="" onclick="SpeedRead.setText(this.innerHTML).startReading()">
+	<p id="tryitouttext" onclick="SpeedRead.setText(this.innerHTML).startReading()">
 	Click on this text. The content will be displayed in an overlay
 	box. The words are shown separately. This way you can read them quicker, then following the line with your eyes. Increase the speed. Make it a game. You will learn quick and be able to read faster and faster. Time is money? Here you have it, I give you the money now, by saving time. 
 	</p>
 
-	<h2 class="text-success">How to use it</h2>
-	<div class="container">
+	<h2 class="text-primary">How to use it</h2>
 	<ul>
 		<li>Add the JavaScript to your website</li>
 		<li>Add Buttons or Options to activate the speedread-Box</li>
@@ -68,7 +80,6 @@ Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod 
 		</ul>
 		</dd>
 	</dl>
-	</div>
 
 	<h2 class="text-info">What the developer say</h2>
 	<blockquote>
