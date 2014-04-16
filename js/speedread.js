@@ -1,6 +1,6 @@
 var SpeedRead = new function() {
 	var self = this;
-	self.wordPerMinute = 250;
+	self.wordPerMinute = 300;
 	self.woerter = [];
 	self.aktWordCount = 0;
 	self.divId = "speadreader_anshownmaske";
@@ -62,15 +62,15 @@ var SpeedRead = new function() {
 			self._ermittelWoerter(self.contentDiv.innerHTML);
 
 		var text = '<div style="height:50px;float:left;text-align:left;overflow:visible;font-family:Georgia, Helvetica, Tahoma, Times, Agency;font-size:30px;"></div>'+
-				'<div style="width:150px;float:right;text-align:right;">'+
-				'<button onclick="SpeedRead.togglePause()">'+((self.pause)?'go':'pause')+'</button>'+
-				'<select onchange="SpeedRead.setWPM(this.options[this.selectedIndex].value)">';
+				'<form class="form-inline" style="width:170px;float:right;text-align:right;"><div class="form-group"><div class="input-group">'+
+				'<div class="input-group-btn"><button type="button" class="btn btn-default" onclick="SpeedRead.togglePause()">'+((self.pause)?'go':'pause')+'</button></div>'+
+				'<select class="form-control" style="width:75px;" onchange="SpeedRead.setWPM(this.options[this.selectedIndex].value)">';
 		for (var a=250;a<650;a=a+50) {
 			text += '<option value='+a+' '+((self.wordPerMinute == a)?"selected":"")+'>'+a+'</option>';
 		}
 		text += '</select>'+
-				'<button onclick="SpeedRead.closeReader()" title="close">X</button>'+
-				'</div>'; // anshow im Fenster
+				'<div class="input-group-btn"><button type="button" class="btn btn-default" onclick="SpeedRead.closeReader()" title="close">X</button></div>'+
+				'</div></div></form>'; // anshow im Fenster
 
 		if (self.readerDiv == null) {
 			if (!document.getElementById(self.divId)) {
