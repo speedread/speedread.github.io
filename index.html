@@ -38,6 +38,15 @@
 	box. The words are shown separately. This way you can read them quicker, then following the line with your eyes. Increase the speed. Make it a game. You will learn quick and be able to read faster and faster. Time is money? Here you have it, I give you the money now, by saving time. 
 	</p>
 
+	<h2 class="text-primary">OnDemand speed reading</h2>
+	<form>
+	<div class="form-group">
+		<textarea onclick="this.select()" name="textbox" rows=5 class="form-control">Paste any text from other websites into the textearea field</textarea>
+	</div>
+	<div class="from-group text-right">
+	<button type="button" onclick="SpeedRead.setText(this.form.elements['textbox'].value).startReading()" class="btn btn-default">try the textarea</button></div>
+	</form>
+
 	<h2 class="text-primary">How to use it</h2>
 	<ul>
 		<li>Add the JavaScript to your website</li>
@@ -75,11 +84,63 @@ Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod 
 		<dt>Add button to start speedread-Box</dt>
 		<dd>
 		Create your own javascript logic - by knowing the functions
-		<ul>
-			<li></li>
-		</ul>
 		</dd>
 	</dl>
+
+	<h2 class="text-primary">API - The functions</h2>
+	<dl class="dl-horizontal">
+		<dt>stop()</dt>
+		<dd>Stops showing the words</dd>
+		<dt>setContainer(contentDiv)</dt>
+		<dd>
+			sets a contaier with the text to word-showing<br>
+			<br>
+			instead setting text for word-showing, you can set an html container. The text will be extracted out of the html container.<br>
+			@param html container with innerHTML or the ID of an html container<br>
+			@throws exception if the html container is not defined
+			@return speedReading object
+		</dd>
+		<dt>setWPM(wordPerMinute)</dt>
+		<dd>
+			sets the speed for word-showing<br>
+			@param integer number words per minute
+			@return speedReading object
+		</dd>
+		<dt>setText(text)</dt>
+		<dd>
+			sets the text for word-showing<br>
+			<br>
+			use this, if you do not want to specify any html container<br>
+			@param text for word-showing
+			@return speedReading object
+		</dd>
+		<dt>togglePause()</dt>
+		<dd>start, resume or pause the word-showing</dd>
+		<dt>showReader()</dt>
+		<dd>
+			start the word-showing in an overlay html box<br>
+			@return speedReading object
+		</dd>
+		<dt>closeReader()</dt>
+		<dd>
+			stops the word-showing and hide the overlay html box<br>
+			@return speedReading object
+		</dd>
+		<dt>showWoerter()</dt>
+		<dd>
+			display the next word in the overlay html box<br>
+			<br>
+			Only if it is not paused or stopped. It restarts self for the next word<br>
+		</dd>
+	</dl>
+
+	<h2 class="text-primary">License</h2>
+	<p class="lead">
+	Use it, change it. But please do not remove the author names.</p>
+	<p>
+	Using this software is free of charge. You do not need to inform anybody using it, although it would be nice knowing, it helps you.<br>
+	All rights reserved.
+	</p>
 
 	<h2 class="text-info">What the developer say</h2>
 	<blockquote>

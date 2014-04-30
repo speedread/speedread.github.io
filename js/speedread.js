@@ -1,3 +1,10 @@
+/**
+* @author Saso Nikolov, v1.1 2014
+* 
+* this class provides an easy way to display a text in an overlay box
+* word by word with the provided speed
+* It is designed to extend your websites with speed reading capabilities
+*/
 var SpeedRead = new function() {
 	var self = this;
 	self.wordPerMinute = 300;
