@@ -154,9 +154,11 @@ var SpeedRead = new function() {
 			return;
 		if (self.aktWordCount >= self.woerter.length)
 			return;
-		self._showWort(self.aktWordCount);
+		var wordlength = self._showWort(self.aktWordCount);
 		self.aktWordCount++;
-		var timeout = 1000 / (self.wordPerMinute / 60);
+		var slowDown = 0;
+		if (wordlength > 14) slowDown = 25;
+		var timeout = 1000 / ((self.wordPerMinute - wordlength) / 60);
 		self.timer = window.setTimeout(self.showWoerter, timeout);
 	}
 	self._showWort = function(wordCount) {
@@ -165,6 +167,7 @@ var SpeedRead = new function() {
 			wort = self.woerter[wordCount];
 		}
 		self.readerDiv.firstChild.innerHTML = wort;
+		return wort.length;
 	}
 
 	return this;
