@@ -13,6 +13,7 @@ var SpeedRead = new function() {
 	self.divId = "speadreader_anshownmaske";
 	self.contentDiv = null;
 	self.readerDiv = null;
+  self.wordDiv = null;
 	self.pause = false;
 	self.stopp = false;
 	self.timer = null;
@@ -54,30 +55,35 @@ var SpeedRead = new function() {
 		return self;
 	}
 
-	self.togglePause = function() {
+	self.togglePause = function(button) {    
 		self.pause = !self.pause;
 		if (!self.pause) {
 			if (self.aktWordCount == self.woerter.length)
 				self.aktWordCount = 0;
 			self.showWoerter();
 		}
+    if (typeof button != "undefined") button.innerHTML = ((self.pause)?'go':'pause');
 	}
+  self.setPause = function() {
+    self.pause = true;
+  }
 
 	self.showReader = function() {
 		self.stopp = false;
 		if (self.contentDiv)
 			self._ermittelWoerter(self.contentDiv.innerHTML);
 
-		var text = '<div style="height:50px;float:left;text-align:left;overflow:visible;font-family:Georgia, Helvetica, Tahoma, Times, Agency;font-size:30px;"></div>'+
-				'<form class="form-inline" style="width:170px;float:right;text-align:right;"><div class="form-group"><div class="input-group">'+
-				'<div class="input-group-btn"><button type="button" class="btn btn-default" onclick="SpeedRead.togglePause()">'+((self.pause)?'go':'pause')+'</button></div>'+
+		var text = ''+
+				'<center><form class="form-inline"><div style="width:170px;" class="form-group"><div class="input-group">'+
+				'<div class="input-group-btn"><button type="button" class="btn btn-default" onclick="SpeedRead.setPause();SpeedRead.showLastWord()">&lt;</button>'+
+        '<button type="button" class="btn btn-default" onclick="SpeedRead.togglePause(this)">'+((self.pause)?'go':'pause')+'</button></div>'+
 				'<select class="form-control" style="width:75px;" onchange="SpeedRead.setWPM(this.options[this.selectedIndex].value)">';
 		for (var a=250;a<650;a=a+50) {
 			text += '<option value='+a+' '+((self.wordPerMinute == a)?"selected":"")+'>'+a+'</option>';
 		}
 		text += '</select>'+
 				'<div class="input-group-btn"><button type="button" class="btn btn-default" onclick="SpeedRead.closeReader()" title="close">X</button></div>'+
-				'</div></div></form>'; // anshow im Fenster
+				'</div></div></form></center>'; // anshow im Fenster
 
 		if (self.readerDiv == null) {
 			if (!document.getElementById(self.divId)) {
@@ -89,12 +95,15 @@ var SpeedRead = new function() {
 			}
 		}
 
+    self.wordDiv = document.createElement('div');
+    self.wordDiv.innerHTML = '<div style="height:60px;text-align:left;overflow:visible;font-family:Georgia, Helvetica, Tahoma, Times, Agency;font-size:30px;/*text-align:center;*/"></div>'; 
+
 		self.readerDiv.innerHTML = "";
 		self.readerDiv.style.width = "80%";           
         self.readerDiv.style.height = "";
         self.readerDiv.style.position = "absolute";
         self.readerDiv.style.zIndex = 101;
-		self.readerDiv.style.border = "2px solid #00204e";
+		    self.readerDiv.style.border = "2px solid #00204e";
         self.readerDiv.style.borderRadius = "6px 6px 6px 6px";
         self.readerDiv.style.boxShadow = "0px 0px 50px 60px #ddd";
         self.readerDiv.style.backgroundColor = "white";
@@ -107,6 +116,7 @@ var SpeedRead = new function() {
         self.readerDiv.style.paddingLeft = "15px";
         self.readerDiv.style.paddingRight = "15px";
         self.readerDiv.innerHTML = text;
+        self.readerDiv.appendChild(self.wordDiv);
         var clientBreite = document.body.clientWidth;        
         self.readerDiv.style.position = 'absolute';
         var toppos = 0;
@@ -166,9 +176,14 @@ var SpeedRead = new function() {
 		if (wordCount < self.woerter.length) {
 			wort = self.woerter[wordCount];
 		}
-		self.readerDiv.firstChild.innerHTML = wort;
+    self.wordDiv.firstChild.innerHTML = wort;
 		return wort.length;
 	}
+  self.showLastWord = function() {
+    if (self.aktWordCount > 0) self.aktWordCount--;
+    self._showWort(self.aktWordCount);
+    return self.aktWordCount; 
+  }
 
 	return this;
 }
